@@ -1,3 +1,4 @@
+version: '2.0'
 session_config:
   session_expiration_time: 0
   carry_over_slots_to_new_session: true
@@ -32,6 +33,7 @@ intents:
 - human_handoff
 - help
 - nlu_fallback
+- prompt
 entities:
 - amount-of-money
 - credit_card
@@ -249,7 +251,9 @@ responses:
   utter_recipients:
   - text: These are your known recpients to whom you can send money:{formatted_recipients}
   utter_greet:
-  - text: Hi! I'm your Financial Assistant!
+  - text: Hi! I'm Yoli your financial guru, here to help you make smarter financial decisions.
+    image: https://media.giphy.com/media/26xBwdIuRJiAIqHwA/giphy.gif
+  - text: Hola, I am Yoli, your smart financial assistant.
   utter_ask_handoff:
   - text: It looks like you want to be transferred to a human agent.
   utter_handoff:
@@ -272,6 +276,16 @@ responses:
   - text: Ok, Thanks!
   utter_slots_values:
   - text: I'll remember that your name is {first_name} {last_name}!
+  utter_prompt:
+  - text: 'I can answer questions about:'
+    buttons:
+    - title: Budgeting
+      payload: /start_budgeting_session
+    - title: Saving
+      payload: /start_savings_session
+    - title: Investing
+      payload: /start_investing_session
+    
 actions:
 - action_session_start
 - action_restart
